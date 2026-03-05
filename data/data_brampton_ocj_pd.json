@@ -78,5 +78,55 @@
     "heading": "Validating Email Service Without Prior Court Order — OCJ Brampton",
     "url": "https://www.ontariocourts.ca/ocj/schedules-and-directions/practice-directions/",
     "text": "If counsel have served originating documents by email without a prior court order authorizing email service, they may file a 14B motion form and affidavit to validate service. The affidavit in support must include evidence that: (1) personal service could not be achieved; and (2) the email address the documents were sent to was recently used by the responding party. The motions judge will consider all of the evidence in determining whether service should be validated."
+  },
+  {
+    "id": "bocj-009",
+    "source": "Ontario Court of Justice — Case Center Guide",
+    "scope": "provincial",
+    "court_level": "OCJ",
+    "section": "Case Center — Overview and Applicability",
+    "heading": "Case Center — What Cases and Events Use It",
+    "url": "https://www.ontariocourts.ca/ocj/family-court/casecenter/",
+    "text": "Case Center is a cloud-based document sharing and e-hearing platform developed by Thomson Reuters, currently free to use. Counsel and parties receive an email invitation from Thomson Reuters if their case qualifies. Cases currently using Case Center include: domestic family matters (Children's Law Reform Act and Family Law Act cases); Family Responsibility Office support enforcement cases in Toronto region (filed October 14, 2025 onward). Events supported: case conferences, settlement conferences, combined conferences, trial management conferences, motions with notice, and first appearance court (if the responding party filed materials at least 5 business days prior). Events NOT using Case Center: first appearances without responding materials filed 5 days ahead, uncontested trials, unopposed final orders, Interjurisdictional Support Orders Act hearings, motions filed within 4 days, ex-parte motions, procedural/unopposed motions, consent motions (Forms 15C/15D), international child abduction claims, CYFSA hearings, and support enforcement hearings outside Toronto."
+  },
+  {
+    "id": "bocj-010",
+    "source": "Ontario Court of Justice — Case Center Guide",
+    "scope": "provincial",
+    "court_level": "OCJ",
+    "section": "Case Center — Upload Timeline and Requirements",
+    "heading": "Case Center — Document Upload Deadline and Filing",
+    "url": "https://www.ontariocourts.ca/ocj/family-court/casecenter/",
+    "text": "Documents filed outside the Ontario Courts Public Portal must be uploaded to Case Center at least 5 days in advance of the hearing, or at the same time as any filing deadlines that are less than 5 days. Case Center does NOT replace the filing of your documents with the court office — documents must still be filed per the 'Scheduling of Family Matters at the Ontario Court of Justice' notice. Parties who file through the Ontario Courts Public Portal do not need to upload directly to Case Center — court staff automatically post those documents. Non-portal filers must upload their filed documents themselves. Provide email addresses on all filed and uploaded documents. If documents are not named per the naming protocol, the judge may decide to review only those documents that comply and may reschedule the hearing."
+  },
+  {
+    "id": "bocj-011",
+    "source": "Ontario Court of Justice — Case Center Guide",
+    "scope": "provincial",
+    "court_level": "OCJ",
+    "section": "Case Center — Document Naming Protocol",
+    "heading": "Case Center — How to Name Documents",
+    "url": "https://www.ontariocourts.ca/ocj/family-court/casecenter/",
+    "text": "Documents uploaded to Case Center must follow this naming format: (1) Document type with form number; (2) Party type (Applicant, Respondent, Other); (3) Party name with initials if needed; (4) Date in DD-MMM-YYYY format. Example: 'Application Form 8 – Applicant – P. Smith – 12-JAN-2021'. Abbreviations allowed: APP, RESP, O, CAS, FRO, OCL. Add numbers at the start for ordering, e.g. '1. Case Conference Brief 17A – Respondent – Smith – 01-JAN-2021'. Document limitations: maximum 500 pages per file (split larger documents into volumes); page numbers should be placed at top-left or centre, not top-right (Case Center auto-numbers there); no password protection; one document per file (except affidavits with exhibits and books of authorities, which should be uploaded as a single PDF with hyperlinks)."
+  },
+  {
+    "id": "bocj-012",
+    "source": "Ontario Court of Justice — Case Center Guide",
+    "scope": "provincial",
+    "court_level": "OCJ",
+    "section": "Case Center — What to Upload in Each Section",
+    "heading": "Case Center — Required Documents by Bundle Section",
+    "url": "https://www.ontariocourts.ca/ocj/family-court/casecenter/",
+    "text": "Case Center organizes documents into Bundles (folders for specific events) and Sections (designated areas within bundles). The Pleadings section must include: Form 8 (Application), Form 10 (Answer), Form 15 (Motion to Change), Form 15B (Response to Motion to Change), Form 13 (Financial Statements), Form 35.1/35.1A (Parenting affidavits), and Affidavits of Service. The Endorsements, Orders and Judgments section must include: all previous orders and endorsements still in effect, relevant endorsements issued before Case Center use, and draft orders for judicial amendment. Do NOT upload: documents subject to publication bans or sealing orders (email to court office instead), supporting evidence for lawyer removal motions (email separately), or documents not filed with the court unless ordered by a judge."
+  },
+  {
+    "id": "bocj-013",
+    "source": "Ontario Court of Justice — Case Center Guide",
+    "scope": "provincial",
+    "court_level": "OCJ",
+    "section": "Case Center — Registration and Access",
+    "heading": "Case Center — How to Register and Grant Access",
+    "url": "https://www.ontariocourts.ca/ocj/family-court/casecenter/",
+    "text": "Use Google Chrome or MS Edge to access Case Center (Internet Explorer is not supported). Register at https://ontariocourts.casecenter.thomsonreuters.com/ by selecting 'Register' (top right). Lawyers can invite clients via the 'People' tab → 'Add people' → 'Invite New Participant'. To grant non-lawyer access, ask the judge to grant the access. Warning: if you invite people who are not lawyers and they share confidential information about the case, the judge may order consequences, including costs. For virtual hearings, click 'View Hearings' for upcoming hearings and Zoom coordinates; lawyers can share Zoom links via the 'Video Conference Link' button. Support: 24/7 resources at https://www.thomsonreuters.ca/en/caselines/ontario-courts-support.html; self-represented litigant hotline: 1-800-980-4962 or info.CaseCenter@ontario.ca (option 4)."
   }
 ]

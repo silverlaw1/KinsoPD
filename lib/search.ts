@@ -22,6 +22,9 @@ const SYNONYM_MAP: Record<string, string[]> = {
   schedule: ["scheduling", "calendly", "booking", "hearing date"],
   book: ["booking", "calendly", "schedule", "hearing date"],
   cancel: ["cancellation", "vacate", "adjourn"],
+  "case center": ["casecenter", "case centre", "upload", "bundle"],
+  casecenter: ["case center", "case centre", "upload", "bundle"],
+  upload: ["case center", "casecenter", "filing"],
 };
 
 const RULE_BOOST_MAP: Record<string, string[]> = {
