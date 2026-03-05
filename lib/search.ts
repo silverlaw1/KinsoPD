@@ -190,10 +190,17 @@ export async function searchChunks(
     }
   }
 
-  // Score FLR entries
+  // Score FLR entries (filter by court level — skip rules for other court levels)
   if (courthouse.dataSources.includes("family_law_rules")) {
     sourcesConsulted.add("Family Law Rules, O. Reg. 114/99");
     for (const entry of data.family_law_rules) {
+      // Skip entries meant for a different court level
+      if (
+        entry.court_level !== "all" &&
+        entry.court_level !== courthouse.courtLevel
+      ) {
+        continue;
+      }
       const score = scoreEntry(entry, keywords, boostedRules);
       if (score > 0) scored.push({ entry, score });
     }
