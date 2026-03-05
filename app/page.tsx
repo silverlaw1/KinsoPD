@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 
 const COURTHOUSES = [
-  { id: "brampton-scj", name: "Brampton SCJ (Central West Region)" },
-  { id: "brampton-ocj", name: "Brampton OCJ (Ontario Court of Justice)" },
+  { id: "brampton-scj", name: "Brampton — Superior Court of Justice (Central West)" },
+  { id: "brampton-ocj", name: "Brampton — Ontario Court of Justice" },
 ];
 
 const EXAMPLE_QUESTIONS = [
@@ -80,8 +80,7 @@ export default function Home() {
               Ontario Family Court — Procedural Reference Tool
             </h1>
             <p className="mt-1 text-sm opacity-90">
-              Answers sourced exclusively from official Ontario Superior Court of
-              Justice Practice Directions and the Family Law Rules, O. Reg. 114/99
+              Procedural information from official practice directions and the Family Law Rules
             </p>
           </div>
           <button
