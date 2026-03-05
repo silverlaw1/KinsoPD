@@ -7,7 +7,7 @@ const client = new Anthropic();
 
 export async function POST(request: NextRequest) {
   try {
-    const { question, courthouse: courthouseId } = await request.json();
+    const { question, courthouse: courthouseId, history } = await request.json();
 
     if (!question || typeof question !== "string" || question.trim().length === 0) {
       return NextResponse.json({ error: "Question is required" }, { status: 400 });
@@ -47,11 +47,22 @@ The user is asking about procedures at: ${courthouseConfig.name}
 RELEVANT PRACTICE DIRECTION AND RULE DATA:
 ${JSON.stringify(chunks)}`;
 
+    // Build messages array — include prior conversation if this is a follow-up
+    const messages: { role: "user" | "assistant"; content: string }[] = [];
+    if (Array.isArray(history)) {
+      for (const msg of history) {
+        if (msg.role === "user" || msg.role === "assistant") {
+          messages.push({ role: msg.role, content: msg.content });
+        }
+      }
+    }
+    messages.push({ role: "user", content: question });
+
     const message = await client.messages.create({
       model: "claude-sonnet-4-20250514",
       max_tokens: 2500,
       system: systemPrompt,
-      messages: [{ role: "user", content: question }],
+      messages,
     });
 
     const answer =

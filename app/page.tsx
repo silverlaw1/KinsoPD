@@ -23,6 +23,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [dark, setDark] = useState(false);
+  const [followUp, setFollowUp] = useState("");
+  const [history, setHistory] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
@@ -47,6 +49,8 @@ export default function Home() {
     setAnswer("");
     setSources([]);
     setError("");
+    setFollowUp("");
+    setHistory([]);
 
     try {
       const res = await fetch("/api/ask", {
@@ -64,6 +68,50 @@ export default function Home() {
 
       setAnswer(data.answer);
       setSources(data.sourcesConsulted || []);
+      setHistory([
+        { role: "user", content: question.trim() },
+        { role: "assistant", content: data.answer },
+      ]);
+    } catch {
+      setError("Failed to connect to the server. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleFollowUp(e: React.FormEvent) {
+    e.preventDefault();
+    if (!followUp.trim() || loading) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: followUp.trim(),
+          courthouse,
+          history,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "An error occurred.");
+        return;
+      }
+
+      setAnswer(data.answer);
+      setSources(data.sourcesConsulted || []);
+      setHistory((prev) => [
+        ...prev,
+        { role: "user", content: followUp.trim() },
+        { role: "assistant", content: data.answer },
+      ]);
+      setFollowUp("");
     } catch {
       setError("Failed to connect to the server. Please try again.");
     } finally {
@@ -193,6 +241,33 @@ export default function Home() {
                   </ul>
                 </div>
               )}
+
+              <form
+                onSubmit={handleFollowUp}
+                className="bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-md p-4 space-y-3"
+              >
+                <label
+                  htmlFor="follow-up"
+                  className="block text-sm font-medium text-gray-600 dark:text-dark-muted"
+                >
+                  Provide additional details or ask a follow-up question
+                </label>
+                <textarea
+                  id="follow-up"
+                  rows={2}
+                  value={followUp}
+                  onChange={(e) => setFollowUp(e.target.value)}
+                  placeholder="e.g., It's a short motion, not a long motion..."
+                  className="w-full border border-gray-300 dark:border-dark-border rounded-md px-3 py-2 bg-white dark:bg-dark-bg text-charcoal dark:text-dark-text placeholder:text-gray-400 dark:placeholder:text-dark-muted focus:outline-none focus:ring-2 focus:ring-navy resize-y text-sm"
+                />
+                <button
+                  type="submit"
+                  disabled={loading || !followUp.trim()}
+                  className="bg-navy text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-navy-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {loading ? "Searching..." : "Send Follow-up"}
+                </button>
+              </form>
             </div>
           )}
         </div>
