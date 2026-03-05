@@ -18,6 +18,10 @@ const SYNONYM_MAP: Record<string, string[]> = {
   file: ["filing", "filed"],
   financial: ["financial statement", "financial disclosure", "form 13", "form 13.1"],
   trial: ["trial management", "trial record", "trial scheduling"],
+  calendly: ["scheduling", "booking", "hearing date", "hearing slot"],
+  schedule: ["scheduling", "calendly", "booking", "hearing date"],
+  book: ["booking", "calendly", "schedule", "hearing date"],
+  cancel: ["cancellation", "vacate", "adjourn"],
 };
 
 const RULE_BOOST_MAP: Record<string, string[]> = {
