@@ -5,6 +5,7 @@
   --color-navy-light: #2a4d7a;
   --color-charcoal: #1a1a1a;
   --color-link: #2563eb;
+  --color-link-dark: #60a5fa;
   --color-bg: #fafafa;
   --color-white: #ffffff;
   --color-gray-100: #f3f4f6;
@@ -13,10 +14,20 @@
   --color-gray-400: #9ca3af;
   --color-gray-500: #6b7280;
   --color-gray-600: #4b5563;
+  --color-dark-bg: #111827;
+  --color-dark-surface: #1f2937;
+  --color-dark-border: #374151;
+  --color-dark-text: #e5e7eb;
+  --color-dark-muted: #9ca3af;
   --font-sans: var(--font-geist-sans);
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-charcoal);
+}
+
+.dark body {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const COURTHOUSES = [
   { id: "brampton-scj", name: "Brampton SCJ (Central West Region)" },
@@ -21,6 +21,22 @@ export default function Home() {
   const [sources, setSources] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      setDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  function toggleDark() {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -55,16 +71,29 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-bg dark:bg-dark-bg text-charcoal dark:text-dark-text">
       <header className="bg-navy text-white py-6 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-2xl font-bold">
-            Ontario Family Court — Procedural Reference Tool
-          </h1>
-          <p className="mt-1 text-sm opacity-90">
-            Answers sourced exclusively from official Ontario Superior Court of
-            Justice Practice Directions and the Family Law Rules, O. Reg. 114/99
-          </p>
+        <div className="max-w-3xl mx-auto flex items-start justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold">
+              Ontario Family Court — Procedural Reference Tool
+            </h1>
+            <p className="mt-1 text-sm opacity-90">
+              Answers sourced exclusively from official Ontario Superior Court of
+              Justice Practice Directions and the Family Law Rules, O. Reg. 114/99
+            </p>
+          </div>
+          <button
+            onClick={toggleDark}
+            aria-label="Toggle dark mode"
+            className="shrink-0 mt-1 p-2 rounded-md hover:bg-white/10 transition-colors"
+          >
+            {dark ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            )}
+          </button>
         </div>
       </header>
 
@@ -74,7 +103,7 @@ export default function Home() {
             <div>
               <label
                 htmlFor="courthouse"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium text-gray-600 dark:text-dark-muted mb-1"
               >
                 Courthouse
               </label>
@@ -82,7 +111,7 @@ export default function Home() {
                 id="courthouse"
                 value={courthouse}
                 onChange={(e) => setCourthouse(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-navy"
+                className="w-full border border-gray-300 dark:border-dark-border rounded-md px-3 py-2 bg-white dark:bg-dark-surface text-charcoal dark:text-dark-text focus:outline-none focus:ring-2 focus:ring-navy"
               >
                 {COURTHOUSES.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -95,7 +124,7 @@ export default function Home() {
             <div>
               <label
                 htmlFor="question"
-                className="block text-sm font-medium text-gray-600 mb-1"
+                className="block text-sm font-medium text-gray-600 dark:text-dark-muted mb-1"
               >
                 Your Question
               </label>
@@ -105,7 +134,7 @@ export default function Home() {
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder="e.g., What is the page limit for a case conference brief?"
-                className="w-full border border-gray-300 rounded-md px-3 py-2 bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-navy resize-y"
+                className="w-full border border-gray-300 dark:border-dark-border rounded-md px-3 py-2 bg-white dark:bg-dark-surface text-charcoal dark:text-dark-text placeholder:text-gray-400 dark:placeholder:text-dark-muted focus:outline-none focus:ring-2 focus:ring-navy resize-y"
               />
             </div>
 
@@ -115,7 +144,7 @@ export default function Home() {
                   key={q}
                   type="button"
                   onClick={() => setQuestion(q)}
-                  className="text-xs px-3 py-1.5 rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 hover:border-gray-400 transition-colors"
+                  className="text-xs px-3 py-1.5 rounded-full border border-gray-300 dark:border-dark-border text-gray-600 dark:text-dark-muted hover:bg-gray-100 dark:hover:bg-dark-surface hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
                 >
                   {q}
                 </button>
@@ -132,8 +161,8 @@ export default function Home() {
           </form>
 
           {loading && (
-            <div className="mt-6 text-center text-gray-500">
-              <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-gray-300 border-t-navy mr-2 align-middle" />
+            <div className="mt-6 text-center text-gray-500 dark:text-dark-muted">
+              <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-gray-300 dark:border-dark-border border-t-navy mr-2 align-middle" />
               <span>
                 Searching practice directions and Family Law Rules...
               </span>
@@ -141,23 +170,23 @@ export default function Home() {
           )}
 
           {error && (
-            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md text-red-700">
+            <div className="mt-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md text-red-700 dark:text-red-400">
               {error}
             </div>
           )}
 
           {answer && (
             <div className="mt-6 space-y-4">
-              <div className="border-l-4 border-navy bg-white rounded-r-md p-5 shadow-sm">
+              <div className="border-l-4 border-navy bg-white dark:bg-dark-surface rounded-r-md p-5 shadow-sm">
                 <MarkdownContent content={answer} />
               </div>
 
               {sources.length > 0 && (
-                <div className="bg-gray-100 rounded-md p-4">
-                  <h3 className="text-sm font-semibold text-gray-600 mb-2">
+                <div className="bg-gray-100 dark:bg-dark-surface rounded-md p-4">
+                  <h3 className="text-sm font-semibold text-gray-600 dark:text-dark-muted mb-2">
                     Sources consulted
                   </h3>
-                  <ul className="text-sm text-gray-500 space-y-1">
+                  <ul className="text-sm text-gray-500 dark:text-dark-muted space-y-1">
                     {sources.map((s) => (
                       <li key={s}>&bull; {s}</li>
                     ))}
@@ -169,9 +198,9 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-gray-200 py-4 px-4">
+      <footer className="border-t border-gray-200 dark:border-dark-border py-4 px-4">
         <div className="max-w-3xl mx-auto">
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-400 dark:text-dark-muted leading-relaxed">
             This tool provides information from official court practice
             directions and the Family Law Rules for reference purposes only. It
             does not constitute legal advice. Always verify current requirements
@@ -181,7 +210,7 @@ export default function Home() {
               href="https://www.ontariocourts.ca"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-link hover:underline"
+              className="text-link dark:text-link-dark hover:underline"
             >
               ontariocourts.ca
             </a>{" "}
@@ -190,7 +219,7 @@ export default function Home() {
               href="https://www.ontario.ca/laws"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-link hover:underline"
+              className="text-link dark:text-link-dark hover:underline"
             >
               e-Laws
             </a>{" "}
@@ -203,21 +232,17 @@ export default function Home() {
 }
 
 function MarkdownContent({ content }: { content: string }) {
-  // Escape HTML first to prevent XSS, then apply markdown formatting
   const escaped = content
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
   const rendered = escaped
-    // Bold
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    // Links - open in new tab
     .replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-link hover:underline">$1</a>'
+      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
     )
-    // Paragraphs
     .split("\n\n")
     .map((p) => p.trim())
     .filter((p) => p)
@@ -226,7 +251,7 @@ function MarkdownContent({ content }: { content: string }) {
 
   return (
     <div
-      className="prose prose-sm max-w-none [&_p]:mb-3 [&_p]:leading-relaxed [&_strong]:font-semibold [&_a]:text-link"
+      className="prose prose-sm max-w-none [&_p]:mb-3 [&_p]:leading-relaxed [&_strong]:font-semibold [&_a]:text-link dark:[&_a]:text-link-dark [&_a:hover]:underline"
       dangerouslySetInnerHTML={{ __html: rendered }}
     />
   );
