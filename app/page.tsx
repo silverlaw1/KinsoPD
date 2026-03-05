@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 const COURTHOUSES = [
   { id: "brampton-scj", name: "Brampton SCJ (Central West Region)" },
+  { id: "brampton-ocj", name: "Brampton OCJ (Ontario Court of Justice)" },
 ];
 
 const EXAMPLE_QUESTIONS = [

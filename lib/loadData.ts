@@ -32,6 +32,7 @@ export type DataEntry = PDEntry | FLREntry;
 interface DataCache {
   provincial_pd: PDEntry[];
   central_west_pd: PDEntry[];
+  brampton_ocj_pd: PDEntry[];
   family_law_rules: FLREntry[];
 }
 
@@ -42,15 +43,17 @@ export async function loadAllData(): Promise<DataCache> {
 
   const dataDir = path.join(process.cwd(), "data");
 
-  const [provincialRaw, centralWestRaw, flrRaw] = await Promise.all([
+  const [provincialRaw, centralWestRaw, bramptonOcjRaw, flrRaw] = await Promise.all([
     readFile(path.join(dataDir, "data_provincial_pd.json"), "utf-8"),
     readFile(path.join(dataDir, "data_central_west_pd.json"), "utf-8"),
+    readFile(path.join(dataDir, "data_brampton_ocj_pd.json"), "utf-8"),
     readFile(path.join(dataDir, "data_family_law_rules.json"), "utf-8"),
   ]);
 
   cache = {
     provincial_pd: JSON.parse(provincialRaw),
     central_west_pd: JSON.parse(centralWestRaw),
+    brampton_ocj_pd: JSON.parse(bramptonOcjRaw),
     family_law_rules: JSON.parse(flrRaw),
   };
 

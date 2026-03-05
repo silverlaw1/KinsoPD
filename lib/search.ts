@@ -178,6 +178,15 @@ export async function searchChunks(
     }
   }
 
+  // Score Brampton OCJ PD entries
+  if (courthouse.dataSources.includes("brampton_ocj_pd")) {
+    sourcesConsulted.add("OCJ Brampton Family Practice Direction");
+    for (const entry of data.brampton_ocj_pd) {
+      const score = scoreEntry(entry, keywords, boostedRules);
+      if (score > 0) scored.push({ entry, score });
+    }
+  }
+
   // Score FLR entries
   if (courthouse.dataSources.includes("family_law_rules")) {
     sourcesConsulted.add("Family Law Rules, O. Reg. 114/99");
