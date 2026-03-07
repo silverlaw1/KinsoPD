@@ -16,7 +16,24 @@
       "Walkerton",
       "Owen Sound"
     ],
-    "text": "Presumptive modes of appearance for family matters in the Central West Region: Early or Urgent Case Conferences: virtual; Urgent Motions: in writing; Case Conferences, Settlement Conferences and Trial Management Conferences: IN PERSON; Assignment Court / Trial Scheduling Conference: virtual; Procedural & Consent Motions: in writing; Short motions: virtual; Long Motions: IN PERSON; Trials: IN PERSON; DRO conferences: virtual. For ROTA weekly circuit courts in Guelph, Orangeville, Walkerton, and Owen Sound, subject to judicial direction, all types of events scheduled during a ROTA Day will be heard in person notwithstanding the presumptive mode. Only where a timely request and clear and compelling reasons exist will a change of presumptive mode be granted."
+    "text": "Presumptive modes of appearance for family matters in the Central West Region: Early or Urgent Case Conferences: virtual; Urgent Motions: in writing; Case Conferences, Settlement Conferences and Trial Management Conferences: IN PERSON; Assignment Court / Trial Scheduling Conference: virtual; Procedural & Consent Motions: in writing; Short motions: virtual; Long Motions: IN PERSON; Trials: IN PERSON; DRO conferences: virtual. Only where a timely request and clear and compelling reasons exist will a change of presumptive mode be granted."
+  },
+  {
+    "id": "cw-001a",
+    "source": "Consolidated Practice Direction for the Central West Region",
+    "scope": "central_west",
+    "court_level": "SCJ",
+    "part": "Part 1",
+    "section": "Part 1, Section A (ROTA Courts)",
+    "heading": "ROTA Weekly Circuit Courts — Modes of Appearance Override",
+    "url": "https://www.ontariocourts.ca/scj/practice_directions/consolidated-practice-direction-for-the-central-west-region/#A_Presumptive_Modes_of_Appearance",
+    "applies_to": [
+      "Guelph",
+      "Orangeville",
+      "Walkerton",
+      "Owen Sound"
+    ],
+    "text": "For ROTA weekly circuit courts in Guelph, Orangeville, Walkerton, and Owen Sound, subject to judicial direction, all types of events scheduled during a ROTA Day will be heard in person notwithstanding the presumptive mode of appearance."
   },
   {
     "id": "cw-002",
